@@ -3,6 +3,8 @@ CHANGELOG - ZIKULA 1.3.6
 
 Fixes:
 - Fixed Zikula_Doctrine2_Entity_Category::toArray fails when used on proxied category
+- Fixed not working password recovery process if using your email adress
+- Fixed System::queryStringSetVar() does not update the request object, #753.
 
 Features:
 - Added garbage collection to CSRF token generator
@@ -42,6 +44,7 @@ Features:
 - Update JqueryMobile to 1.3.0
 - Update Mapstraction to 3.0.0
 - Mobile Theme now has an configurable block position for startpage.
+- Dont send an welcome email to new users function added, #731.
 
 
 CHANGELOG - ZIKULA 1.3.5
