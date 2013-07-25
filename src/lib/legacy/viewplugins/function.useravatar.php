@@ -60,10 +60,15 @@ function smarty_function_useravatar($params, Zikula_View $view)
             $params['rating'] = false;
         }
         if (!isset($params['size'])) {
-            if (isset($params['width'])) {
-                $params['size'] = $params['width'];
+            if(isset($params['width']) || isset($params['height'])) {
+                if ((isset($params['width']) && !isset($params['height'])) || (isset($params['width']) && isset($params['height']) && $params['width'] < $params['size'])) {
+                    $params['size'] = $params['width'];
+                } elseif((!isset($params['width']) && isset($params['height'])) || (isset($params['width']) && isset($params['height']) && $params['width'] > $params['size'])) {
+                    $params['size'] = $params['height'];
+                } else {
+                    $params['size'] = 80;
+                }
             }
-            $params['size'] = 80;
         }
         $params['width']  = $params['size'];
         $params['height'] = $params['size'];
@@ -86,14 +91,14 @@ function smarty_function_useravatar($params, Zikula_View $view)
         $classString = "class=\"$params[class]\" ";
     }
 
-    $html = '<img ' . $classString . ' src="' . DataUtil::formatForDisplay($avatarURL) . '" title="' . DataUtil::formatForDisplay($uname) . '" alt="' . DataUtil::formatForDisplay($uname);
+    $html = '<img ' . $classString . ' src="' . DataUtil::formatForDisplay($avatarURL) . '" title="' . DataUtil::formatForDisplay($uname) . '" alt="' . DataUtil::formatForDisplay($uname) . '"';
     if (isset($params['width'])) {
         $html .= ' width="'.$params['width'].'"';
     }
     if (isset($params['height'])) {
         $html .= ' height="'.$params['height'].'"';
     }
-    $html .= '" />';
+    $html .= ' />';
 
     if (isset($params['assign'])) {
         $view->assign($params['assign'], $avatarURL);

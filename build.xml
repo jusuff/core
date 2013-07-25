@@ -116,15 +116,6 @@
         <chmod file="${packagepath}/app/logs" mode="0777"/>
         <chmod file="${packagepath}/config/config.php" mode="0666"/>
         <chmod file="${packagepath}/userdata" mode="0777"/>
-        <chmod file="${packagepath}/ztemp" mode="0777"/>
-        <chmod file="${packagepath}/ztemp/error_logs" mode="0777"/>
-        <chmod file="${packagepath}/ztemp/view_cache" mode="0777"/>
-        <chmod file="${packagepath}/ztemp/view_compiled" mode="0777"/>
-        <chmod file="${packagepath}/ztemp/Theme_cache" mode="0777"/>
-        <chmod file="${packagepath}/ztemp/Theme_compiled" mode="0777"/>
-        <chmod file="${packagepath}/ztemp/Theme_Config" mode="0777"/>
-        <chmod file="${packagepath}/ztemp/idsTmp" mode="0777"/>
-        <chmod file="${packagepath}/ztemp/purifierCache" mode="0777"/>
 
         <echo msg="Creating archive..."/>
         <!-- zip's don't play nicely in Phing - using direct command -->
@@ -265,7 +256,7 @@
     <!-- Compress own JS -->
     <target name="compressownjs">
         <echo msg="YUI_Compressor for JS files..."/>
-        <!-- <exec command="BAREFILENAME=`echo ${filename}|sed 's/.js//g'`; /usr/bin/java -jar /var/lib/jenkins/yuicompressor-2.4.2.jar -o ${packagepath}/$BAREFILENAME-min.js ${packagepath}/${filename}" /> -->
-        <exec command="/usr/bin/java -jar /var/lib/jenkins/yuicompressor-2.4.2.jar -o ${packagepath}/${filename}.tmp ${packagepath}/${filename};echo '// Copyright Zikula Foundation 2010 - license GNU/LGPLv3 (or at your option, any later version).' > ${packagepath}/${filename};cat ${packagepath}/${filename}.tmp >> ${packagepath}/${filename};rm -f ${packagepath}/${filename}.tmp"/>
+        <!-- <exec command="BAREFILENAME=`echo ${filename}|sed 's/.js//g'`; /usr/bin/java -jar /var/lib/jenkins/yuicompressor-2.4.8.jar -o ${packagepath}/$BAREFILENAME-min.js ${packagepath}/${filename}" /> -->
+        <exec command="/usr/bin/java -jar /var/lib/jenkins/yuicompressor-2.4.8.jar -o ${packagepath}/${filename}.tmp ${packagepath}/${filename};echo '// Copyright Zikula Foundation 2010 - license GNU/LGPLv3 (or at your option, any later version).' > ${packagepath}/${filename};cat ${packagepath}/${filename}.tmp >> ${packagepath}/${filename};rm -f ${packagepath}/${filename}.tmp"/>
     </target>
 </project>
