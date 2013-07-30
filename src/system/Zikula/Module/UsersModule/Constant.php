@@ -285,6 +285,14 @@ namespace Zikula\Module\UsersModule
          */
         const DEFAULT_PASSWORD_STRENGTH_METER_ENABLED = false;
         /**
+         * Module variable key for the flag indicating whether the password reminder should be mandatory or not.
+         */
+        const MODVAR_PASSWORD_REMINDER_MANDATORY = 'password_reminder_mandatory';
+        /**
+         * Default value for the flag indicating whether the password reminder should be mandatory or not.
+         */
+        const DEFAULT_PASSWORD_REMINDER_MANDATORY = true;
+        /**
          * Module variable key for the admin notification e-mail address.
          */
         const MODVAR_REGISTRATION_ADMIN_NOTIFICATION_EMAIL = 'reg_notifyemail';
@@ -387,8 +395,23 @@ namespace Zikula\Module\UsersModule
         const EMAIL_DOMAIN_VALIDATION_PATTERN = '(?:[^\\s\\000-\\037\\177\\(\\)<>@,;:\\\\"\\[\\]]\\.?)+\\.[a-z]{2,6}';
     }
 }
+/**
+ * BC layer till for <=1.3.5
+ */
 namespace {
     class Users_Constant extends Zikula\Module\UsersModule\Constant
+    {
+    }
+
+    class Users_Helper_AuthenticationMethod extends \Zikula\Module\UsersModule\Helper\AuthenticationMethodHelper
+    {
+    }
+
+    class Users_Helper_AuthenticationMethodList extends \Zikula\Module\UsersModule\Helper\AuthenticationMethodListHelper
+    {
+    }
+
+    class Users_Helper_HasMethodList extends \Zikula\Module\UsersModule\Helper\HashMethodListHelper
     {
     }
 }
