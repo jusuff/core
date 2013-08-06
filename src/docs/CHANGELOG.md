@@ -5,8 +5,17 @@ Fixes:
 - Fixed Zikula_Doctrine2_Entity_Category::toArray fails when used on proxied category
 - Fixed not working password recovery process if using your email adress
 - Fixed System::queryStringSetVar() does not update the request object, #753.
+- Fixed category tree html encoding problem, #681
+- Fixed extmenu drag and drop problem, #801.
+- Fixed setState module problem, #843.
+- Deprecated preg_replace() /e modifier in DataUtil replaced, #889.
+- Fixed SecurityCenter - warnings during installation, #880.
+- Fix ModUtil::getName() inconsistencies, #848.
+- Fixed strip entry point root access, #936.
+- Fix block filtering by module does an incorrect comparison, #339.
 
 Features:
+- Show an error message if version number of a module is incorrect.
 - Added garbage collection to CSRF token generator
 - Introduced Symfony2 Forms
 
