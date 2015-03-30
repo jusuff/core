@@ -65,7 +65,7 @@ class Zikula_Core
     /**
      * The version sub-ID.
      */
-    const VERSION_SUB = 'vai';
+    const VERSION_SUB = 'Overture'; // 2.0.0 to be named 'Concerto'
 
     /**
      * The minimum required PHP version for this release of core.
@@ -569,6 +569,7 @@ class Zikula_Core
 
         if ($stage & self::STAGE_THEME) {
             // register default page vars
+            PageUtil::registerVar('polyfill_features', true);
             PageUtil::registerVar('title');
             PageUtil::setVar('title', System::getVar('defaultpagetitle'));
             PageUtil::registerVar('keywords', true);
